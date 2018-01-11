@@ -24,6 +24,16 @@ if let newMiddleName = middleName {
 }
 
 print(lastname)
+//Ternary operation
+let test = false
+var myInt = test ? 10 : 20
+print(myInt)
+
+// Nil-coalescing operator
+var optionalString: String? = "toto"
+let valueWithDefault = optionalString ?? "tata"
+
+print(valueWithDefault)
 
 
 

@@ -2,10 +2,9 @@
 class Mammifere {
     var firstName: String
     var age: Int
-    var isWalking: Bool
+    var isWalking = false
     
     init(firstName: String, age: Int) {
-        self.isWalking = false
         self.firstName = firstName
         self.age = age
     }
@@ -50,8 +49,6 @@ class Person: Mammifere {
 
 
 //Utilisation de la classe en créant une instance de Person
-
-let monEntier = 3
 let jon = Person(firstName: "Jon", lastName: "Snow", age: 34)
 //constructeur de person
 
@@ -60,6 +57,7 @@ if !jon.isWalking {
 }
 
 jon.age = jon.age + 40
+
 jon.walk()
 jon.talk()
 if jon.isWalking {
@@ -72,7 +70,6 @@ felix.talk()
 
 
 //: Struct
-
 struct Author {
     var name: String
     var books: [Book]
@@ -98,9 +95,9 @@ struct Book {
     }
 }
 let homere = Author(name: "Homère", books: [])
-let hach = Editor(name: "Hachette", editedBooks: [])
+let hachette = Editor(name: "Hachette", editedBooks: [])
 
-let illiade = Book(nbPages: 800, title: "Illiade", author: homere, editor: nil)
+let illiade = Book(nbPages: 800, title: "Illiade", author: homere, editor: hachette)
 
 if let editorName = illiade.whatIsTheNameOfEditor() {
     print(editorName)
@@ -138,8 +135,43 @@ print(f.name)
 print(cp.name)
 
 
+//:Enum WITH RAW VALUE
+enum BankAccount: Int {
+    case positive = 1
+    case negative = 0
+    
+    func displayBankerMessage() {
+        switch self {
+        case .positive:
+            print("Super vous avez de l'argent")
+        case .negative:
+            print("Je vous bloque vos CB")
+        }
+    }
+}
+
+let myBanAccount = BankAccount(rawValue: 1)
+myBanAccount!.displayBankerMessage()
 
 
+//:Enum WITH ASSOCIATED VALUE
+enum BankAccount2 {
+    case positive (Int)
+    case negative (Int)
+    func displayBankerMessage() {
+        switch self {
+        case .positive(let value):
+            print("Super vous avez \(value) € sur votre compte")
+            
+        case .negative(_):
+            print("Je vous bloque vos CB car vous etes négatif de")
+            
+        }
+    }
+}
+
+let myBankAccount = BankAccount2.negative(1700)
+myBankAccount.displayBankerMessage()
 
 
 

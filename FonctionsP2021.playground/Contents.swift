@@ -96,10 +96,10 @@ func filterByHand(tab: [Int]) -> [Int] {
 //print(filterByHand(tab: [0,1,2,3,4,5,6]))
 
 
-let filteredTab = [-1,0,1,2,3,4,5,6].filter { $0 < 1 || $0 > 5 }
-                                    .map { $0 * 2 }
+//let filteredTab = [-1,0,1,2,3,4,5,6].filter { $0 < 1 || $0 > 5 }
+  //                                  .map { $0 * 2 }
 
-print(filteredTab)
+//print(filteredTab)
 
 
 //Fonction sorted
@@ -130,5 +130,13 @@ let notes = [15, 18, 3, 20]
 let newSum = notes.reduce(0) { $0 + $1 }
 print(Double(newSum/notes.count))
 
+
+//removing argument label
+func addNew(_ a: Int, _ secondOperand : Int) -> Int {
+    return a + secondOperand
+}
+
+
+print(addNew(7, 3))
 
 
