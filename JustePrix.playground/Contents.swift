@@ -54,6 +54,9 @@ struct Player {
 }
 
 //Utilisation
-let lagaffe = Animator()
-let me = Player(animator: lagaffe)
+let lagaffe = Animator() // Instanciating animator and choosing a random number
+
+let me = Player(animator: lagaffe) //associating the animator to the newly created player
+
 print("I won with \(me.guess(lower: 0, higher: 1000000))")
+

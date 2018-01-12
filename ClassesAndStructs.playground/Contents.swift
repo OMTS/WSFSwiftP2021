@@ -37,6 +37,11 @@ class Chat: Mammifere {
 class Person: Mammifere {
     var lastName: String
     
+    //computed
+    var nickname: String {
+        return "The Lion " + lastName
+    }
+    
     init(firstName: String,
          lastName: String,
          age: Int) {
@@ -45,6 +50,10 @@ class Person: Mammifere {
         super.init(firstName: firstName, age: age)
     }
 }
+
+let you = Person(firstName: "Tyrion", lastName: "Lannister", age: 34)
+print(you.lastName) //stored property
+print(you.nickname) //computed property
 
 
 
@@ -135,10 +144,19 @@ print(f.name)
 print(cp.name)
 
 
+//:Simple Enum
+enum WSFBool {
+    case YES
+    case NO
+}
+
+let myBool = WSFBool.YES
+
+
 //:Enum WITH RAW VALUE
 enum BankAccount: Int {
-    case positive = 1
-    case negative = 0
+    case positive = 0
+    case negative = 1
     
     func displayBankerMessage() {
         switch self {
@@ -150,15 +168,19 @@ enum BankAccount: Int {
     }
 }
 
-let myBanAccount = BankAccount(rawValue: 1)
-myBanAccount!.displayBankerMessage()
+let myBanAccount = BankAccount(rawValue: 12)
+if let myAccount = myBanAccount { //optional binding
+    myAccount.displayBankerMessage()
+}
 
 
 //:Enum WITH ASSOCIATED VALUE
 enum BankAccount2 {
     case positive (Int)
     case negative (Int)
+    
     func displayBankerMessage() {
+        
         switch self {
         case .positive(let value):
             print("Super vous avez \(value) € sur votre compte")
@@ -171,12 +193,12 @@ enum BankAccount2 {
 }
 
 let myBankAccount = BankAccount2.negative(1700)
+
+let mBA2 = BankAccount2.positive(300)
+
+
 myBankAccount.displayBankerMessage()
-
-
-
-
-
+mBA2.displayBankerMessage()
 
 
 
